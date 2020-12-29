@@ -1,0 +1,84 @@
+/*Operations with Complex Numbers*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+void welcome();
+void addition(float a1,float b1,float a2,float b2);
+void submission(float a1,float b1,float a2,float b2);
+void multiplication(float a1,float b1,float a2,float b2);
+void division(float a1,float b1,float a2,float b2);
+
+int main()
+{
+    float a1, a2, b1, b2;
+    char Operator, ask = 'y';
+    welcome();
+    while(ask == 'y') {
+    printf("Enter 1st complex number (z1 : a1 + b1 i)\n");
+        printf("a1 = ");
+        scanf("%f",&a1);
+        printf("b1 = ");
+        scanf("%f",&b1);
+    printf("Enter 2nd complex number (z2 : a2 + b2 i)\n");
+        printf("a2 = ");
+        scanf("%f",&a2);
+        printf("b2 = ");
+        scanf("%f",&b2);
+    printf("\nEnter operator (+ - * /) : ");
+        Operator = getche();
+    printf("\n\n");
+    switch(Operator){
+    case '+' :
+        addition(a1,b1,a2,b2);
+        break;
+    case '-' :
+        submission(a1,b1,a2,b2);
+        break;
+    case '*' :
+        multiplication(a1,b1,a2,b2);
+        break;
+    case '/' :
+        division(a1,b1,a2,b2);
+        break;
+    default :
+        printf("Invalid Operator !\n");
+        }
+    printf("\n Do you want to continue ? (Enter y/n) : ");
+    ask = getche();
+    printf("\n\n");
+    }
+    return 0;
+}
+void welcome(){
+    printf("\t\t\t\t****************\n");
+    printf("\t\t\t\t* CS 99 TABRIZ *\n");
+    printf("\t\t\t\t* Math Project *\n");
+    printf("\t\t\t\t****************\n\n");
+}
+
+void addition(float a1,float b1,float a2,float b2){
+    float sum_real = a1 + a2;
+    float sum_img  = b1 + b2;
+    printf("Result = %.2f + %.2f i \n",sum_real,sum_img);
+}
+
+void submission(float a1,float b1,float a2,float b2) {
+    float sub_real = a1 - a2;
+    float sub_img  = b1 - b2;
+    printf("Result = %.2f + %.2f i \n",sub_real,sub_img);
+}
+
+void multiplication(float a1,float b1,float a2,float b2) {
+    float mult_real = a1*a2 - b1*b2;
+    float mult_img  = a1*b2 + a2*b1;
+    printf("Result = %.2f + %.2f i \n",mult_real,mult_img);
+}
+
+void division(float a1,float b1,float a2,float b2){
+    float x_a = a1; float x_b = b1;
+    float y_a = a2; float y_b = b2;
+    float z_a = (x_a*y_a + x_b*y_b)/(y_a*y_a+y_b*y_b);
+    float z_b = (x_b*y_a - x_a*y_b)/(y_a*y_a + y_b*y_b);
+    printf("Result = %.2f + %.2f i \n",z_a,z_b);
+}
